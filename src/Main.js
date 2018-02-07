@@ -1,6 +1,9 @@
 exports.testImpl = function(x) {
-  return function() {
-    return x;
+  return function(y) {
+    return function() {
+      console.log(x, y);
+      return "Mealy " + x  + " " + y;
+    }
   }
 }
 
