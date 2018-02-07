@@ -1,16 +1,13 @@
 exports.testImpl = function(x) {
   return function(y) {
-    return function() {
-      console.log(x, y);
-      return "Mealy " + x  + " " + y;
+    return function(cb) {
+      return function() {
+        var body = document.getElementsByTagName("body")[0];
+
+        body.addEventListener("click", function() {
+          cb(x*y)();
+        });
+      }
     }
-  }
-}
-
-exports.myLog = function(x) {
-  return function() {
-    console.log(x);
-
-    return {};
   }
 }
